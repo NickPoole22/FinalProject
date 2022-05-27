@@ -16,10 +16,10 @@ public class Main {
             //p1.setHealthPotions(1);
             String answer = scan.nextLine();
 
-            Monster m = new Monster(4, 8, 12);
-            System.out.println(m.handle(answer));
 
-
+                if (answer.equals("s")) {
+                    System.out.println(p1.showStats());
+                }
 
                 if (answer.equals("q")){
                     break;
@@ -27,26 +27,47 @@ public class Main {
                 if (answer.equals("h")) {
                     System.out.println(p1.usePotion());
                 }
-                //System.out.println(p1.showStats());
+
 
                 if (answer.equals("e")) {
-                    Encounter();
+                    Monster m = new Monster("Zombie", 50, 2, 12);
+                    System.out.println("A " + m.getName() + " appears in front of you!");
+                    System.out.println(m.monsterStats());
+                    while (m.getHealth() > 0) {
+
+                        System.out.println("What is your next move? Type a to attack, d to dodge, b to block, and f to flee");
+
+
+                        String encounterAnswer = scan.nextLine();
+                        System.out.println(m.handle(encounterAnswer));
+                        if(encounterAnswer.equals("f")){
+                            System.out.println("You got away safely!");
+                            break;
+                        }
+
+                    }
+                    if (m.getHealth() <= 0) {
+                        System.out.println("You killed the " + m.getName() + "!");
+                        System.out.println(p1.victory());
+                        System.out.println(p1.Reward());
+                    }
+
+
                 }
 
-                if (answer.equals("s")) {
 
-                }
 
 
 
         }
-        public void Encounter(Player, Monster){
-            System.out.println("A monster appears in front of you! press a to attack d to dodge and b to block");
-            String move = scan.nextLine();
-            if(move.equals("a")){
+        System.out.println("Game Over!");
+       // public void Encounter(Player, Monster){
+         //   System.out.println("A monster appears in front of you! press a to attack d to dodge and b to block");
+           // String move = scan.nextLine();
+            //if(move.equals("a")){
 
-            }
-        }
+            //}
+        //}
 
 
     }
